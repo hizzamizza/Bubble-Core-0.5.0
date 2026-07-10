@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d0on0ih2vmiuq"]
+
+[ext_resource type="Script" uid="uid://cjhtvbkvd3cir" path="res://collision_shape_3d.gd" id="1_6lwfj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cimh6"]
+margin = 0.0
+radius = 0.2
+height = 1.0
+
+[node name="Node3D" type="CharacterBody3D" unique_id=939373103 node_paths=PackedStringArray("tank", "gun")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_6lwfj")
+tank = NodePath(".")
+speed = 1.0
+gun = NodePath("CSGSphere3D2")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1582896870]
+transform = Transform3D(-4.371139e-08, 0, -0.54478943, 0, 0.32938856, 0, 1, 0, -2.3813502e-08, 0, 0.059941262, 0)
+radial_segments = 28
+rings = 12
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="." unique_id=787082956]
+transform = Transform3D(-4.371136e-08, 0, 0.9999995, 0, 1, 0, -0.9999995, 0, -4.371136e-08, -0.0011729635, 0.18337518, -0.36199933)
+radius = 0.1
+radial_segments = 35
+rings = 13
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="CSGSphere3D2" unique_id=1004881043]
+transform = Transform3D(1.5805386, 0, 1.7763568e-15, 0, 0.62480104, 0, 7.1054274e-15, 0, 0.51185703, 0.12757006, 0, 7.3341653e-09)
+radius = 0.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=433127847]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 0.088602245, 0)
+shape = SubResource("CapsuleShape3D_cimh6")
