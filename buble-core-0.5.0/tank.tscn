@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://d0on0ih2vmiuq"]
 
 [ext_resource type="Script" uid="uid://cjhtvbkvd3cir" path="res://collision_shape_3d.gd" id="1_6lwfj"]
+[ext_resource type="Shader" uid="uid://cc5suyw7ekv25" path="res://pp shader.gdshader" id="2_1ealj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cimh6"]
-margin = 0.0
 radius = 0.2
 height = 1.0
 
-[node name="Node3D" type="CharacterBody3D" unique_id=939373103 node_paths=PackedStringArray("tank", "gun")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lwfj"]
+shader = ExtResource("2_1ealj")
+shader_parameter/border_color = Color(0, 0.6862745, 1, 1)
+shader_parameter/border_width = 1.0
+shader_parameter/tolerance = 0.0999999977648
+
+[node name="Node3D" type="CharacterBody3D" unique_id=939373103 node_paths=PackedStringArray("tank", "gun", "shoot_point")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_6lwfj")
 tank = NodePath(".")
 speed = 1.0
 gun = NodePath("CSGSphere3D2")
+shoot_point = NodePath("Node3D")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1582896870]
 transform = Transform3D(-4.371139e-08, 0, -0.54478943, 0, 0.32938856, 0, 1, 0, -2.3813502e-08, 0, 0.059941262, 0)
@@ -32,3 +39,17 @@ radius = 0.05
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=433127847]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 0.088602245, 0)
 shape = SubResource("CapsuleShape3D_cimh6")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=493538165]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 0.18327469, -0.54141724)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2048569433]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1292687080]
+material = SubResource("ShaderMaterial_6lwfj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
