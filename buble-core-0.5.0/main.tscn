@@ -19,10 +19,22 @@ size = Vector3(1.0561523, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rw38"]
 albedo_color = Color(0, 0.7125, 0.95, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(1.0561523, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+size = Vector3(1.0561523, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
+size = Vector3(1.0561523, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
+size = Vector3(1.0561523, 1, 1)
+
 [node name="Main" type="Node3D" unique_id=430554001]
 
 [node name="Node3D" parent="." unique_id=935307446 node_paths=PackedStringArray("camera", "plane") instance=ExtResource("1_ig7tw")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.9720588, 0.076847315, 1.7962155)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3.9720588, 0.076847315, 1.7962155)
 camera = NodePath("../Camera3D")
 plane = NodePath("../MeshInstance3D")
 
@@ -57,11 +69,21 @@ layers = 8
 mesh = SubResource("BoxMesh_6rw38")
 surface_material_override/0 = SubResource("StandardMaterial3D_6rw38")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=1934068823]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=2001073192]
+shape = SubResource("BoxShape3D_h2yge")
+
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=2108015161]
 transform = Transform3D(-1.2788631e-06, 0, 1, 0, 3.0844643, 0, -29.256977, 0, -4.371139e-08, 14.951441, 0.48882675, -0.22507668)
 layers = 8
 mesh = SubResource("BoxMesh_6rw38")
 surface_material_override/0 = SubResource("StandardMaterial3D_6rw38")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3" unique_id=1950188127]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D" unique_id=1127635269]
+shape = SubResource("BoxShape3D_1bvp3")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1593719564]
 transform = Transform3D(-1.2788631e-06, 0, 1, 0, 3.0844643, 0, -29.256977, 0, -4.371139e-08, -15.252619, 0.48882675, -0.22507668)
@@ -69,11 +91,21 @@ layers = 8
 mesh = SubResource("BoxMesh_6rw38")
 surface_material_override/0 = SubResource("StandardMaterial3D_6rw38")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4" unique_id=511203730]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D" unique_id=1834183741]
+shape = SubResource("BoxShape3D_lquwl")
+
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1133411967]
 transform = Transform3D(29.256977, 0, 0, 0, 3.0844643, 0, 0, 0, 1, 0.18034685, 0.48882675, 11.7113495)
 layers = 8
 mesh = SubResource("BoxMesh_6rw38")
 surface_material_override/0 = SubResource("StandardMaterial3D_6rw38")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D5" unique_id=2017705769]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D5/StaticBody3D" unique_id=37491700]
+shape = SubResource("BoxShape3D_7mycd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=808131166]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8888903, 1.1290159)

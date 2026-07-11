@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func handle_inputs(delta) -> void:
 	var x_total = Input.get_action_strength('right') - Input.get_action_strength('left')
-	var z_total = Input.get_action_strength('up') - Input.get_action_strength('down')
+	var z_total = Input.get_action_strength('down') - Input.get_action_strength('up')
 
 	var net_vector = Vector3(x_total, 0, z_total)
 	var move_target = transform.origin + net_vector
