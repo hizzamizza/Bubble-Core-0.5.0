@@ -18,9 +18,9 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_6lwfj")
 tank = NodePath(".")
 speed = 1.0
-aim = 2.0
+shot_cooldown = null
 gun = NodePath("CSGSphere3D2")
-shoot_point = NodePath("CSGSphere3D2/CSGSphere3D3/Node3D")
+shoot_point = NodePath("Node3D")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1582896870]
 transform = Transform3D(-4.371139e-08, 0, -0.54478943, 0, 0.32938856, 0, 1, 0, -2.3813502e-08, 0, 0.059941262, 0)
@@ -37,12 +37,12 @@ rings = 13
 transform = Transform3D(-0.08686278, 0, 0.5110839, 0, 0.62480116, 0, -1.5781515, 0, -0.028130528, -0.0015071267, 0.008132666, -0.11733407)
 radius = 0.05
 
-[node name="Node3D" type="Node3D" parent="CSGSphere3D2/CSGSphere3D3" unique_id=493538165]
-transform = Transform3D(-0.0148031125, 0, -0.6325222, 0, 1.6005096, 0, 1.953135, 0, -0.045709666, 0.040452316, 0.0053809285, 0.00091790035)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=433127847]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 0.088602245, 0)
 shape = SubResource("CapsuleShape3D_cimh6")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=493538165]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 0.18327469, -0.54141724)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2048569433]
 

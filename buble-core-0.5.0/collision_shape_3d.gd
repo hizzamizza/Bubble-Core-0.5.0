@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 @export var tank : CharacterBody3D
 @export var speed : float
+@export var aim : float
 @export var shot_cooldown : float
 
 @export var gun : Node3D
@@ -15,6 +16,8 @@ var gravity = 9.8
 var can_shoot : bool = true
 var bullet_scene : PackedScene = preload('uid://csshvi7odn0at')
 
+var rotate_tween : Tween
+
 func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
 
@@ -24,11 +27,15 @@ func handle_inputs(delta) -> void:
 	var z_total = Input.get_action_strength('up') - Input.get_action_strength('down')
 
 	var net_vector = Vector3(x_total, 0, z_total)
+	var move_target = transform.origin + net_vector
 
-	tank.position += net_vector * delta * speed
+	if net_vector != Vector3.ZERO:
+		transform = transform.interpolate_with(transform.looking_at(move_target), aim * delta)
+
+	transform.origin += net_vector * delta * speed
 
 	var mouse_pos = get_mouse_position()
-	look_at(mouse_pos, Vector3.UP)
+	gun.look_at(mouse_pos, Vector3.UP)
 
 
 func get_mouse_position() -> Vector3:

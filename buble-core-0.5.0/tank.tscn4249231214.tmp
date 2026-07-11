@@ -19,6 +19,7 @@ script = ExtResource("1_6lwfj")
 tank = NodePath(".")
 speed = 1.0
 aim = 2.0
+shot_cooldown = null
 gun = NodePath("CSGSphere3D2")
 shoot_point = NodePath("CSGSphere3D2/CSGSphere3D3/Node3D")
 
