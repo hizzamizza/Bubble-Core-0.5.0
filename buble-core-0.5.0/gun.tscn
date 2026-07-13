@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dovyuocaxtfps"]
+
+[ext_resource type="Script" uid="uid://c1l0l7bqjesbl" path="res://Scripts/Classes/Weapon.gd" id="1_vk1bi"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=431259569 node_paths=PackedStringArray("shoot_from")]
+script = ExtResource("1_vk1bi")
+shoot_from = [NodePath("CSGSphere3D2/CSGSphere3D3/Node3D")]
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="." unique_id=262326808]
+transform = Transform3D(0.9995006, 0, -0.031581134, 0, 1, 0, 0.031581134, 0, 0.9995006, 0, 0, 0)
+radius = 0.1
+radial_segments = 35
+rings = 13
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="CSGSphere3D2" unique_id=1008226120]
+transform = Transform3D(-0.08686278, 0, 0.5110839, 0, 0.62480116, 0, -1.5781515, 0, -0.028130528, -0.0015071267, 0.008132666, -0.11733407)
+radius = 0.05
+
+[node name="Node3D" type="Node3D" parent="CSGSphere3D2/CSGSphere3D3" unique_id=1713336880]
+transform = Transform3D(-0.0148031125, 0, -0.6325222, 0, 1.6005096, 0, 1.953135, 0, -0.045709666, 0.040452316, 0.0053809285, 0.00091790035)

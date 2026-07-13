@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d0on0ih2vmiuq" path="res://tank.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://csshvi7odn0at" path="res://bullet.tscn" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://cpkh5sbwwoyc1" path="res://tank.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://ccl1pq3uoogha" path="res://Scripts/Classes/PlayerController.gd" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dovyuocaxtfps" path="res://gun.tscn" id="3_1bvp3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cimh6"]
 size = Vector2(30, 30)
@@ -33,10 +34,23 @@ size = Vector3(1.0561523, 1, 1)
 
 [node name="Main" type="Node3D" unique_id=430554001]
 
-[node name="Node3D" parent="." unique_id=935307446 node_paths=PackedStringArray("camera", "plane") instance=ExtResource("1_ig7tw")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3.9720588, 0.076847315, 1.7962155)
+[node name="Player" parent="." unique_id=935307446 node_paths=PackedStringArray("camera", "plane") instance=ExtResource("1_ig7tw")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3.972, 0.06, 1.796)
+move_speed = 2.0
+rotate_speed = 4.0
 camera = NodePath("../Camera3D")
 plane = NodePath("../MeshInstance3D")
+
+[node name="PlayerController" type="Node3D" parent="Player" unique_id=1174348534 node_paths=PackedStringArray("control_target")]
+script = ExtResource("2_1bvp3")
+control_target = NodePath("..")
+metadata/_custom_type_script = "uid://ccl1pq3uoogha"
+
+[node name="CharacterBody3D" parent="Player" unique_id=431259569 node_paths=PackedStringArray("tank_base") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.28336263, 0)
+tank_base = NodePath("..")
+cooldown = 0.4
+bullet_scene_path = "uid://csshvi7odn0at"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1636048053]
 transform = Transform3D(1, 5.454855e-08, -4.928014e-08, 3.7162692e-08, 0.20327815, 0.979121, 6.342721e-08, -0.979121, 0.20327815, 0, 22.80472, 1.695179)
@@ -59,9 +73,10 @@ shape = SubResource("BoxShape3D_0xm2m")
 [node name="bullet" parent="." unique_id=2126118623 instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9977931, 0.18272603, -0.6383916)
 
-[node name="Node3D2" parent="." unique_id=939373103 instance=ExtResource("1_ig7tw")]
+[node name="Dummy" parent="." unique_id=939373103 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -1)
-script = ExtResource("3_h2yge")
+move_speed = 1.0
+rotate_speed = 1.0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=606424451]
 transform = Transform3D(29.256977, 0, 0, 0, 3.0844643, 0, 0, 0, 1, 0, 0.48882675, -14.410561)
