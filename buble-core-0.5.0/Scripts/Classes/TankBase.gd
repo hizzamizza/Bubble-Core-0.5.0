@@ -44,3 +44,7 @@ func handle_move_aim(delta) -> void:
 	
 	transform.origin.y = .06 #magic number bad, should be put in a global somewhere
 	move_and_slide()
+
+
+func kill() -> void:
+	print(self, ' i have died')
