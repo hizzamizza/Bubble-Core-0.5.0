@@ -37,20 +37,24 @@ func _physics_process(delta: float) -> void:
 
 
 func handle_move_aim(delta) -> void:
-
 	if move_vector:
 		var move_rotation_vector = transform.origin + move_vector
 		transform = transform.interpolate_with(transform.looking_at(move_rotation_vector), rotate_speed * delta)
-		transform.origin += move_vector * delta * move_speed
+		velocity = move_vector * move_speed
+	else:
+		velocity -= velocity.normalized() * Util.FRICTION
 	
-	transform.origin.y = Util.def_y_height
+	#clamp velocity to max speed
+	velocity = velocity.normalized() * min(velocity.length(), move_speed)
+
+	transform.origin.y = Util.DEF_Y_HEIGHT
 	move_and_slide()
 
 
 func hit(damage : int = 0) -> void:
 	health -= damage
 	health = max(health, 0)
-	print(self, ' i have recieved %s damage, %s health left' % [damage, health])
+	# print(self, ' i have recieved %s damage, %s health left' % [damage, health])
 	if health == 0:
 		death()
 

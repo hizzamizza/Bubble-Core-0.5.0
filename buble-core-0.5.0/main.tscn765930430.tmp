@@ -41,7 +41,7 @@ dummy_tank = NodePath("Dummy")
 base_mesh = NodePath("Floor Mesh")
 
 [node name="Player" parent="." unique_id=935307446 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3.972, 0.1, 1.796)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3.972, 0.06, 1.796)
 move_speed = 2.0
 rotate_speed = 4.0
 

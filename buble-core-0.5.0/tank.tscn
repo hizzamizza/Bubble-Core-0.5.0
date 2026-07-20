@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjhtvbkvd3cir" path="res://Scripts/Classes/TankBase.gd" id="1_6lwfj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cimh6"]
-radius = 0.22167969
+radius = 0.18457031
 height = 1.0080566
 
 [node name="Node3D" type="CharacterBody3D" unique_id=939373103]
@@ -16,5 +16,5 @@ radial_segments = 28
 rings = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1367244993]
-transform = Transform3D(0.9999838, 0, 0, 0, -4.3711385e-08, 1, 0, -0.9999838, -4.3710426e-08, 0, 0.12657514, 0.004517793)
+transform = Transform3D(0.99998134, 0, 0, 0, -4.3711385e-08, 1, 0, -0.99998134, -4.371028e-08, 0, 0.07456848, 0.004517792)
 shape = SubResource("CapsuleShape3D_cimh6")
