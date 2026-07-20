@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var cooldown : float
 @export var shoot_from : Array[Node3D]
 @export var bullet_scene_path : String
+
 var bullet_scene : PackedScene:
 	get():
 		if !bullet_scene:

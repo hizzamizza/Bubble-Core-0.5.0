@@ -5,11 +5,12 @@ extends CharacterBody3D
 @export var move_speed : float
 @export var rotate_speed : float
 
-@export var gun : Node3D
-@export var camera : Camera3D
-@export var plane : MeshInstance3D
+@export var gun : Weapon
 
-@export var shoot_point : Node3D
+@export var health : int = 3
+
+signal on_death
+
 
 var gravity = 9.8
 var can_shoot : bool = true
@@ -42,9 +43,21 @@ func handle_move_aim(delta) -> void:
 		transform = transform.interpolate_with(transform.looking_at(move_rotation_vector), rotate_speed * delta)
 		transform.origin += move_vector * delta * move_speed
 	
-	transform.origin.y = .06 #magic number bad, should be put in a global somewhere
+	transform.origin.y = Util.def_y_height
 	move_and_slide()
 
 
-func kill() -> void:
-	print(self, ' i have died')
+func hit(damage : int = 0) -> void:
+	health -= damage
+	health = max(health, 0)
+	print(self, ' i have recieved %s damage, %s health left' % [damage, health])
+	if health == 0:
+		death()
+
+
+func death() -> void:
+	print('dead')
+	ScoreCounter.score += 1
+	print(ScoreCounter.score)
+	on_death.emit()
+	queue_free()

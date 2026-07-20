@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://ukp6v72ux421" path="res://Scripts/Classes/Bullet.gd" id="1_v7oki"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cimh6"]
-radius = 0.018447908
+radius = 0.036
 
 [node name="bullet" type="CharacterBody3D" unique_id=2126118623]
 script = ExtResource("1_v7oki")
+speed = 5.0
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1836244386]
-radius = 0.02
+radius = 0.04
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=558767196]
 shape = SubResource("SphereShape3D_cimh6")

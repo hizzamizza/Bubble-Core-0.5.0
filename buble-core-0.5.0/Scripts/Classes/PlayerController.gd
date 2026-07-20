@@ -6,10 +6,6 @@ func _ready() -> void:
 	Locator.player = control_target
 
 
-func _physics_process(_delta: float) -> void:
-	handle_inputs()
-
-
 func handle_inputs() -> void:
 	var x_total = Input.get_action_strength('right') - Input.get_action_strength('left')
 	var z_total = Input.get_action_strength('down') - Input.get_action_strength('up')
